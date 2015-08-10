@@ -1,16 +1,29 @@
 #include <stdio.h>
+#include <stdlib.h> 
 
-static char input[2048];
+#include <editline/readline.h>
+#include <editline/history.h>
+
 
 int main(int argc, char** argv) {
+	
+	/* Print Version and Exit Information */
 	puts("Lispy Version 0.0.0.0.1");
 	puts("Press CTRL+C to Exit\n");
 
+	
 	while(1) {
-		fputs("lispy> ", stdout);
+		/* Output prompt and get input */
+		char *input  = readline("lispy> ");
 
-		fgets(input, 2048, stdin);
+		/* Add input to history */
+		add_history(input);
 
-		printf("No you're a %s", input);
+		/* echo input to the user */
+		printf("No you're a %s\n", input);
+
+		/* Free retrived input */
+		free(input);
+
 	}
 }
