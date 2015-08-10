@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h> 
 
+#ifdef _WIN32
+#include <string.h>
+#include "win_editline.h"
+#else
 #include <editline/readline.h>
 #include <editline/history.h>
-
+#endif
 
 int main(int argc, char** argv) {
 	
