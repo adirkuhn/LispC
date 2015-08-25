@@ -1,10 +1,11 @@
 CC = cc
 CFLAGS = -std=c99 -Wall -g
-CLIBS = -ledit
-FILES = prompt
+CLIBS = -ledit -lm
+CFLIBS = lib/mpc/mpc.c
+FILES = prompt parsing
 
 %: %.c
-	$(CC) $(CFLAGS) $^ $(CLIBS) -o $@.o
+	$(CC) $(CFLAGS) $(CFLIBS) $^ $(CLIBS) -o $@.o
 
 clean:
 	rm *.o
