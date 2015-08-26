@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -std=c99 -Wall -g
 CLIBS = -ledit -lm
-CFLIBS = lib/mpc/mpc.c
+CFLIBS = lib/mpc/mpc.c evaluation.c
 FILES = prompt parsing
 
 %: %.c

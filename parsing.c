@@ -10,6 +10,7 @@
 #endif
 
 #include "lib/mpc/mpc.h"
+#include "evaluation.h"
 
 int main(int argc, char** argv) {
 	
@@ -43,7 +44,10 @@ int main(int argc, char** argv) {
 		add_history(input);
 
 		if (mpc_parse("<stdin>", input, Lispy, &r)) {
-			mpc_ast_print(r.output);
+
+			long result = evaluation(r.output);
+			printf("%li\n", result);
+
 			mpc_ast_delete(r.output);
 		}
 		else {
