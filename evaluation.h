@@ -1,2 +1,4 @@
-long evaluation(mpc_ast_t* t);
-long evaluation_op(long x, char* op, long y);
+#include "type.h"
+
+lval evaluation(mpc_ast_t* t);
+lval evaluation_op(lval x, char* op, lval y);

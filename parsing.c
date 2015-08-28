@@ -45,8 +45,8 @@ int main(int argc, char** argv) {
 
 		if (mpc_parse("<stdin>", input, Lispy, &r)) {
 
-			long result = evaluation(r.output);
-			printf("%li\n", result);
+			lval result = evaluation(r.output);
+			lval_println(result);
 
 			mpc_ast_delete(r.output);
 		}
