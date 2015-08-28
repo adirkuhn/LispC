@@ -22,7 +22,7 @@ lval lval_err(int x) {
 void lval_print(lval v) {
 	switch (v.type) {
 		case LVAL_NUM:
-			prinf("%li", v.num);
+			printf("%li", v.num);
 			break;
 
 		case LVAL_ERR:

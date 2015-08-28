@@ -1,8 +1,7 @@
 #include "lib/mpc/mpc.h"
 #include "evaluation.h"
-#include "type.h"
 
-long evaluation(mpc_ast_t* t) {
+lval evaluation(mpc_ast_t* t) {
 
 	/* If tagged as number return it directly */
 	if (strstr(t->tag, "number")) {
@@ -48,5 +47,5 @@ lval evaluation_op(lval x, char *op, lval y) {
 			: lval_num(x.num / y.num);
 	}
 
-	return 0;
+	return lval_err(LERR_BAD_OP);
 }

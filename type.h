@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /* lval struct */
 typedef struct {
 	int type;
