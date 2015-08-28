@@ -1,2 +1,2 @@
-long evaluation(mpc_ast_t* t);
-long evaluation_op(long x, char* op, long y);
+lval evaluation(mpc_ast_t* t);
+lval evaluation_op(lval x, char* op, lval y);
