@@ -1,14 +1,7 @@
 #include <stdio.h>
 
-/* lval struct */
-typedef struct {
-	int type;
-	long num;
-	int err;
-} lval;
-
 /* enumeration for lval types */
-enum { LVAL_NUM, LVAL_ERR };
+enum { LVAL_NUM, LVAL_ERR, LVAL_SYM, LVAL_SEXPR };
 
 /* enumeration for possibles errors */
 enum { LERR_DIV_ZERO, LERR_BAD_OP, LERR_BAD_NUM };
@@ -24,3 +17,16 @@ void lval_print(lval v);
 
 /* print a lval type with new line */
 void lval_println(lval v);
+
+/* lval struct */
+typedef struct lval {
+	int type;
+	long num;
+
+	char *err;
+	char *sym;
+
+	/* Count and Pointer to a list of "lval*" */
+	int count;
+	struct lval** cell;
+} lval;
