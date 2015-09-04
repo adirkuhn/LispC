@@ -39,6 +39,37 @@ lval* lval_sexpr(void) {
 	return v;
 }
 
+
+/* delete a lval */
+void lval_del(lval* v) {
+
+	switch(v->type) {
+		/* do nothing special for numbers */
+		case LVAL_NUM:
+			break;
+
+		/* For Error or Symbol free string data */
+		case LVAL_ERR:
+			free(v->err);
+			break;
+		case LVAL_SYM:
+			free(v->sym);
+			break;
+
+		/* if Sexpr then delete all elements inside */
+		case LVAL_SEXPR:
+			for (int i = 0; i < v->count; i++) {
+				lval_del(v->cell[i]);
+			}
+			free(v->cell);
+			break;
+
+	}
+
+	/* free the memory allocated for the "lval" struct itself */
+	free(v);
+}
+
 /* print a lval */
 void lval_print(lval v) {
 	switch (v.type) {
