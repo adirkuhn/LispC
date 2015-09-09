@@ -46,6 +46,12 @@ lval evaluation_op(lval x, char *op, lval y) {
 			? lval_err(LERR_DIV_ZERO)
 			: lval_num(x.num / y.num);
 	}
+	if (strcmp(op, "%") == 0) {
+		/* verify if divisor are 0 */
+		return y.num == 0
+			? lval_err(LERR_DIV_ZERO)
+			: lval_num(x.num % y.num);
+	}
 
 	return lval_err(LERR_BAD_OP);
 }
